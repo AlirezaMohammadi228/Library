@@ -1,0 +1,41 @@
+﻿@using Library.Models.Book
+@model List<Book>
+<form asp-controller="Book" asp-action="Index" method="post">
+    <div class="mb-5">
+        <label for="BookGenre" class="form-label">Book Genre</label>
+        <select name="BookGenre" id="BookGenre" class="form-select">
+            <option value="0">None</option>
+            <option value="1">Novel</option>
+            <option value="2">Scientific</option>
+        </select>
+    </div>
+    <div class="mb-5">
+        <label for="title" class="form-label">Title Or Author</label>
+        <input type="text" name="title" class="form-control" id="title" placeholder="Title Or Author">
+    </div>
+    <button type="submit" class="btn btn-success rounded-pill px-4 py-2">Apply Filter</button>
+</form>
+<br/>
+<a asp-action="Create" class="btn btn-success rounded-pill px-4 py-2"> Create</a>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Quantity</th>
+        <th>Type</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var item in Model.Where(x => x.IsAvailable == true))
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Author</td>
+            <td>@item.Quantity</td>
+            <td>@item.BookGenre</td>
+            <td>
+                <a asp-action="Update" asp-route-Id="@item.Id">Update</a>
+                <a asp-action="Delete" asp-route-Id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

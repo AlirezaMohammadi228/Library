@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form asp-controller="Book" asp-action="Create" method="post">
+    <div class="mb-4">
+        <label for="Title" class="form-label">Title</label>
+        <input type="text" name="Title" class="form-control" id="Title" aria-describedby="emailHelp" placeholder="Title" required>
+    </div>
+    <div class="mb-4">
+        <label for="Author" class="form-label">Author</label>
+        <input type="text" name="Author" class="form-control" id="Author" placeholder="Author" required>
+    </div>
+    <div class="mb-4">
+        <label for="Quantity" class="form-label">Quantity</label>
+        <input type="number" name="Quantity" class="form-control" id="Quantity" placeholder="Quantity" required>
+    </div>
+    <div class="mb-4">
+        <label for="BookGenre" class="form-label">Book Genre</label>
+        <select name="BookGenre" id="BookGenre" class="form-select">
+
+            <option value="0">None</option>
+            <option value="1">Novel</option>
+            <option value="2">Scientific</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
