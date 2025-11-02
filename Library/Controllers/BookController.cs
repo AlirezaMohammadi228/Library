@@ -14,15 +14,27 @@ namespace Library.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create( Book book)
+        public IActionResult Create(Book book)
         {
             bookRepository.Create(book);
             return RedirectToAction("Index");
         }
-            
+
         public IActionResult Delete(int id)
         {
             bookRepository.Delete(bookRepository.GetById(id));
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var model = bookRepository.GetById(id);
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult Update(Book book , int id)
+        {
+            bookRepository.Update(book, id);
             return RedirectToAction("Index");
         }
         [HttpGet]
@@ -36,6 +48,6 @@ namespace Library.Controllers
         {
             return View(bookRepository.Filter(bookGenre, title));
         }
-        
+
     }
 }
